@@ -1,9 +1,9 @@
 ---
-title: 某某中學的WiFi密碼大全
+title: 福建中學部分WiFi密碼
 published: 2025-04-08
-description: ""
+description: "不想裝MDM也想用學校網絡？試試這個"
 image: ""
-tags: [iPad, MDM]
+tags: [iPad, MDM, WiFi]
 category: "學校"
 draft: false
 lang: "zh_TW"
@@ -13,10 +13,13 @@ lang: "zh_TW"
 
 這個頁面是怕note.ms上的被人刪了的備份
 
-在使用之前看完這幾條：
+:::note
+在使用之前看完這幾條：  
+1. 別大規模傳播  
+2. 盡量不要給不信任的同學  
+:::
 
-1. 別大規模傳播
-2. 盡量不要給不信任的同學
+
 
 ## WiFi 密碼
 
