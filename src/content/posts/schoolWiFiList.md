@@ -26,5 +26,6 @@ lang: "zh_TW"
 **cXXX**: `25781745` _(XXX 是房間號，例如：c101)_  
 **solidworks**: `lesson@#`  
 **fmsteacher**: `FkssTeacher@201509`  
+**fmsguest**: `guest0411`
 
 獲取途徑就不説了，如果你有密碼的話麻煩在[這裏](https://note.ms/fsswifilist)寫一下，別搞破壞
