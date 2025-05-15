@@ -4,7 +4,7 @@ published: 2025-04-20
 description: "&\"warning: GDB: Failed to set controlling terminal: Operation not permitted\n\""
 image: ""
 tags: [c++, gdb, vscode]
-category: "C++"
+category: "Cpp"
 draft: false
 lang: "zh_CN"
 ---
