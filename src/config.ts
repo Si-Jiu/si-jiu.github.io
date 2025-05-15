@@ -73,6 +73,11 @@ export const profileConfig: ProfileConfig = {
 			icon: "fa6-brands:github",
 			url: "https://github.com/Si-Jiu",
 		},
+		{
+			name: "Bilibili",
+			icon: "fa6-brands:bilibili",
+			url: "https://b23.tv/KDoztHf"
+		},
 	],
 };
 
