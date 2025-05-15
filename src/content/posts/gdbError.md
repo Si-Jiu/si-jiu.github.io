@@ -3,7 +3,7 @@ title: VSCode gdb调试时报错
 published: 2025-04-20
 description: "&\"warning: GDB: Failed to set controlling terminal: Operation not permitted\n\""
 image: ""
-tags: [c++, gdb, vscode]
+tags: [cpp, gdb, vscode]
 category: "Cpp"
 draft: false
 lang: "zh_CN"
