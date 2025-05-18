@@ -5,7 +5,7 @@ description: "不想裝MDM也想用學校網絡？試試這個"
 image: ""
 tags: [iPad, MDM, WiFi]
 category: "學校"
-draft: false
+draft: true
 lang: "zh_TW"
 ---
 
