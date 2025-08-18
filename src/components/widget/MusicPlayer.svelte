@@ -23,8 +23,8 @@ let showError = false;
 
 // 当前歌曲信息
 let currentSong = {
-	title: "示例歌曲",
-	artist: "示例艺术家",
+	title: "未播放内容",
+	artist: "",
 	cover: "/favicon/favicon-light-192.png",
 	url: "",
 };
@@ -33,31 +33,87 @@ let currentSong = {
 let playlist = [
 	{
 		id: 1,
-		title: "ひとり上手",
-		artist: "Kaya",
-		cover: "assets/music/cover/hitori.jpg",
-		url: "assets/music/url/hitori.mp3", // 示例音频
-		duration: 240,
+		title: "Constant Moderato",
+		artist: "ミツキヨ",
+		cover: "assets/music/cover/ba_ost_1.jpg",
+		url: "assets/music/url/Constant Moderato.mp3",
+		duration: 137,
 	},
 	{
 		id: 2,
-		title: "眩耀夜行",
-		artist: "スリーズブーケ",
-		cover: "assets/music/cover/xryx.jpg",
-		url: "assets/music/url/xryx.mp3", // 示例音频
-		duration: 180,
+		title: "Pixel Time",
+		artist: "ミツキヨ",
+		cover: "assets/music/cover/ba_ost_2.jpg",
+		url: "assets/music/url/Pixel Time.mp3",
+		duration: 129,
+	},
+    {
+		id: 3,
+		title: "GGF",
+		artist: "Nor",
+		cover: "assets/music/cover/ba_ost_2.jpg",
+		url: "assets/music/url/GGF.mp3",
+		duration: 111,
 	},
 	{
-		id: 3,
-		title: "春雷の頃",
-		artist: "22/7",
-		cover: "assets/music/cover/cl.jpg",
-		url: "assets/music/url/cl.mp3", // 示例音频
-		duration: 200,
+		id: 4,
+		title: "Up to 21°C",
+		artist: "Nor",
+		cover: "assets/music/cover/ba_ost_6.jpg",
+		url: "assets/music/url/Up to 21°C.mp3",
+		duration: 131,
+	},
+    {
+		id: 5,
+		title: "Usagi Flap",
+		artist: "Nor",
+		cover: "assets/music/cover/ba_ost_6.jpg",
+		url: "assets/music/url/Usagi Flap.mp3",
+		duration: 126,
+	},
+    {
+		id: 6,
+		title: "Clear Morning",
+		artist: "小倉唯",
+		cover: "assets/music/cover/cm.jpg",
+		url: "assets/music/url/Clear Morning.mp3",
+		duration: 277,
+	},
+    {
+		id: 7,
+		title: "Battlefield 1 Classic Theme / Mayhem View",
+		artist: "Johan Soderqvist / Patrik Andrén",
+		cover: "assets/music/cover/bf1.jpg",
+		url: "assets/music/url/Battlefield 1 Classic Theme Mayhem View.mp3",
+		duration: 195,
+	},
+    {
+		id: 8,
+		title: "Battlefield 3 Main Theme",
+		artist: "Johan Skugge / Jukka Rintamäki",
+		cover: "assets/music/cover/bf3.jpg",
+		url: "assets/music/url/Battlefield 3 Main Theme.mp3",
+		duration: 115,
+	},
+    {
+		id: 9,
+		title: "Battlefield 4 Warsaw Theme",
+		artist: "Rami",
+		cover: "assets/music/cover/bf4.jpg",
+		url: "assets/music/url/Battlefield 4 Warsaw Theme.mp3",
+		duration: 156,
+	},
+    {
+		id: 10,
+		title: "Battlefield V Legacy Theme",
+		artist: "Johan Soderqvist / Patrik Andrén",
+		cover: "assets/music/cover/bfv.jpg",
+		url: "assets/music/url/Battlefield V Legacy Theme.mp3",
+		duration: 215,
 	},
 ];
 
-let currentIndex = 0;
+let currentIndex = 1;
 let audio: HTMLAudioElement;
 let progressBar: HTMLElement;
 let volumeBar: HTMLElement;
