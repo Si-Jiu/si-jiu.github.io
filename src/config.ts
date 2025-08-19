@@ -152,7 +152,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 };
 
 export const commentConfig: CommentConfig = {
-	enable: false, // Enable the comment function. When it is set to false, the comment component will not be displayed in the article area.
+	enable: true, // Enable the comment function. When it is set to false, the comment component will not be displayed in the article area.
 	twikoo: {
 		envId: "https://twikoo.vercel.app",
 	},
