@@ -164,9 +164,10 @@ export const announcementConfig: AnnouncementConfig = {
 	content: "Nothing here~", // Announcement content
 	closable: true, // Allow users to close the announcement
 	link: {
+		enable: true, // Enable link
 		text: "Learn More", // Link text
 		url: "/about/", // Link URL
-		external: true, // Internal link
+		external: false, // Internal link
 	},
 };
 
