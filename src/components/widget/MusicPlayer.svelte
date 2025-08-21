@@ -52,8 +52,8 @@ let showError = false;
 
 // 当前歌曲信息
 let currentSong = {
-	title: "未播放内容",
-	artist: "",
+	title: "未在播放",
+	artist: "-",
 	cover: "/favicon/favicon-light-192.png",
 	url: "",
 	duration: 0,
@@ -146,7 +146,45 @@ const localPlaylist = [
 		url: "assets/music/url/Battlefield V Legacy Theme.mp3",
 		duration: 215,
 	},
-];
+
+];async function fetchMetingPlaylist() {
+	if (!meting_api || !meting_id) return;
+	isLoading = true;
+	const apiUrl = meting_api
+		.replace(":server", meting_server)
+		.replace(":type", meting_type)
+		.replace(":id", meting_id)
+		.replace(":auth", "")
+		.replace(":r", Date.now().toString());
+	try {
+		const res = await fetch(apiUrl);
+		if (!res.ok) throw new Error("meting api error");
+		const list = await res.json();
+		playlist = list.map((song) => {
+			let title = song.name ?? song.title ?? "未知歌曲";
+			let artist = song.artist ?? song.author ?? "未知艺术家";
+			let dur = song.duration ?? 0;
+			if (dur > 10000) dur = Math.floor(dur / 1000);
+			if (!Number.isFinite(dur) || dur <= 0) dur = 0;
+			return {
+				id: song.id,
+				title,
+				artist,
+				cover: song.pic ?? "",
+				url: song.url ?? "",
+				duration: dur,
+			};
+		});
+		if (playlist.length > 0) {
+			loadSong(playlist[0]);
+		}
+		isLoading = false;
+	} catch (e) {
+		showErrorMessage("Meting 歌单获取失败");
+		isLoading = false;
+	}
+}
+
 function togglePlay() {
 	if (!audio || !currentSong.url) return;
 	if (isPlaying) {
