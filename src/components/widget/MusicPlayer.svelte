@@ -12,7 +12,7 @@ import Key from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
 
 // 音乐播放器模式，可选 "local" 或 "meting"，从本地配置中获取或使用默认值 "meting"
-let mode = musicPlayerConfig.mode ?? "meting";
+let mode = musicPlayerConfig.mode ?? "local";
 // Meting API 地址，从配置中获取或使用默认地址(bilibili.uno(由哔哩哔哩松坂有希公益管理)),服务器在海外,部分音乐平台可能不支持并且速度可能慢,也可以自建Meting API
 let meting_api =
 	musicPlayerConfig.meting_api ??
