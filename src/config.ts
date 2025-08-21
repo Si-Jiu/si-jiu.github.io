@@ -39,9 +39,7 @@ export const siteConfig: SiteConfig = {
 
 		// Support single image or image array, carousel is automatically enabled when array length > 1
 		src: {
-			desktop: [
-				"assets/desktop-banner/1-banner.webp",
-			], // Desktop banner images
+			desktop: ["assets/desktop-banner/1-banner.webp"], // Desktop banner images
 			mobile: [
 				// "assets/mobile-banner/1.webp",
 				// "assets/mobile-banner/2.webp",
@@ -109,7 +107,7 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-		LinkPreset.About
+		LinkPreset.About,
 		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
 		// {
 		// 	name: "Links",
@@ -163,7 +161,7 @@ export const profileConfig: ProfileConfig = {
 	],
 	// Umami统计部份，记得在layout插入Umami的head标签
 	umami: {
-		enable: true, // 是否显示umami统计
+		enable: false, // 是否显示umami统计
 		shareId: "G65zrdEkxpFVGuEf", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
 		region: "us", //Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
 	},
@@ -190,7 +188,8 @@ export const commentConfig: CommentConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "更新", // Announcement title
-	content: "评论系统已接入反垃圾信息系统，Charlie速速来战\n音乐已由本地换成网易云音乐，在境外会出现无法播放版权保护歌曲的问题", // Announcement content
+	content:
+		"评论系统已接入反垃圾信息系统，音乐已由本地换成网易云音乐，在境外会出现无法播放版权保护歌曲的问题，umami因技术问题先关闭", // Announcement content
 	closable: false, // Allow users to close the announcement
 	link: {
 		enable: true, // Enable link
