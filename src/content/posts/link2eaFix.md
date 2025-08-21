@@ -2,7 +2,7 @@
 title: link2ea找不到应用程序快速修复
 published: 2025-05-15
 description: "link2ea://launchgame/...."
-image: "./covers/link2eaFix.png"
+image: "https://i.imgur.com/q8kCYPd.png"
 tags: [EA, 修复]
 category: "游戏"
 draft: false

@@ -164,7 +164,7 @@ export const profileConfig: ProfileConfig = {
 	// Umami统计部份，记得在layout插入Umami的head标签
 	umami: {
 		enable: true, // 是否显示umami统计
-		shareId: "pgPBpuq2R9Idoi6j", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
+		shareId: "G65zrdEkxpFVGuEf", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
 		region: "us", //Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
 	},
 };
@@ -189,14 +189,14 @@ export const commentConfig: CommentConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "公告", // Announcement title
-	content: "你好，這裏沒有東西~", // Announcement content
-	closable: true, // Allow users to close the announcement
+	title: "更新", // Announcement title
+	content: "评论系统已接入反垃圾信息系统，Charlie速速来战\n音乐已由本地换成网易云音乐，在境外会出现无法播放版权保护歌曲的问题", // Announcement content
+	closable: false, // Allow users to close the announcement
 	link: {
 		enable: true, // Enable link
 		text: "Learn More", // Link text
-		url: "/about/", // Link URL
-		external: false, // Internal link
+		url: "https://youtu.be/dQw4w9WgXcQ?si=FsynoBMQFDce4jec", // Link URL
+		external: true, // Internal link
 	},
 };
 

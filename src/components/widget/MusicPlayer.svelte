@@ -12,13 +12,13 @@ import Key from "../../i18n/i18nKey";
 import { i18n } from "../../i18n/translation";
 
 // 音乐播放器模式，可选 "local" 或 "meting"，从本地配置中获取或使用默认值 "meting"
-let mode = musicPlayerConfig.mode ?? "local";
+let mode = musicPlayerConfig.mode ?? "meting";
 // Meting API 地址，从配置中获取或使用默认地址(bilibili.uno(由哔哩哔哩松坂有希公益管理)),服务器在海外,部分音乐平台可能不支持并且速度可能慢,也可以自建Meting API
 let meting_api =
 	musicPlayerConfig.meting_api ??
 	"https://www.bilibili.uno/api?server=:server&type=:type&id=:id&auth=:auth&r=:r";
 // Meting API 的 ID，从配置中获取或使用默认值
-let meting_id = musicPlayerConfig.id ?? "14164869977";
+let meting_id = musicPlayerConfig.id ?? "14175652304";
 // Meting API 的服务器，从配置中获取或使用默认值,有的meting的api源支持更多平台,一般来说,netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
 let meting_server = musicPlayerConfig.server ?? "netease";
 // Meting API 的类型，从配置中获取或使用默认值
@@ -82,7 +82,7 @@ const localPlaylist = [
 		url: "assets/music/url/Pixel Time.mp3",
 		duration: 129,
 	},
-    {
+	{
 		id: 3,
 		title: "GGF",
 		artist: "Nor",
@@ -98,7 +98,7 @@ const localPlaylist = [
 		url: "assets/music/url/Up to 21°C.mp3",
 		duration: 131,
 	},
-    {
+	{
 		id: 5,
 		title: "Usagi Flap",
 		artist: "Nor",
@@ -106,7 +106,7 @@ const localPlaylist = [
 		url: "assets/music/url/Usagi Flap.mp3",
 		duration: 126,
 	},
-    {
+	{
 		id: 6,
 		title: "Clear Morning",
 		artist: "小倉唯",
@@ -114,7 +114,7 @@ const localPlaylist = [
 		url: "assets/music/url/Clear Morning.mp3",
 		duration: 277,
 	},
-    {
+	{
 		id: 7,
 		title: "Battlefield 1 Classic Theme / Mayhem View",
 		artist: "Johan Soderqvist / Patrik Andrén",
@@ -122,7 +122,7 @@ const localPlaylist = [
 		url: "assets/music/url/Battlefield 1 Classic Theme Mayhem View.mp3",
 		duration: 195,
 	},
-    {
+	{
 		id: 8,
 		title: "Battlefield 3 Main Theme",
 		artist: "Johan Skugge / Jukka Rintamäki",
@@ -130,7 +130,7 @@ const localPlaylist = [
 		url: "assets/music/url/Battlefield 3 Main Theme.mp3",
 		duration: 115,
 	},
-    {
+	{
 		id: 9,
 		title: "Battlefield 4 Warsaw Theme",
 		artist: "Rami",
@@ -138,7 +138,7 @@ const localPlaylist = [
 		url: "assets/music/url/Battlefield 4 Warsaw Theme.mp3",
 		duration: 156,
 	},
-    {
+	{
 		id: 10,
 		title: "Battlefield V Legacy Theme",
 		artist: "Johan Soderqvist / Patrik Andrén",
