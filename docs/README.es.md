@@ -9,8 +9,7 @@
 
 Una plantilla de blog estático moderna y rica en características con funcionalidades avanzadas y hermoso diseño, construida con [Astro](https://astro.build).
 
-[**🖥️ Demo en vivo**](https://mizuki.mysqil.com/)
-[**🖥️ Documentación oficial de usuario de Mizuki**](https://docs.mizuki.mysqil.com/)
+[**🖥️ Demo en vivo**](https://blog.mysqil.com/)
 
 🌏 Idiomas README
 [**中文**](../README.md) /
@@ -132,8 +131,6 @@ Despliega tu blog en plataformas de hosting estático:
 - **Cloudflare Pages:** Conecta tu repositorio
 
 Recuerda actualizar la URL `site` en `astro.config.mjs` antes del despliegue.
-
-
 
 ## 📝 Frontmatter de Publicaciones
 
