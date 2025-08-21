@@ -146,8 +146,9 @@ const localPlaylist = [
 		url: "assets/music/url/Battlefield V Legacy Theme.mp3",
 		duration: 215,
 	},
+];
 
-];async function fetchMetingPlaylist() {
+async function fetchMetingPlaylist() {
 	if (!meting_api || !meting_id) return;
 	isLoading = true;
 	const apiUrl = meting_api
