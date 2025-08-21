@@ -6,6 +6,7 @@ import type {
 	MusicPlayerConfig,
 	NavBarConfig,
 	ProfileConfig,
+	SidebarLayoutConfig,
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
@@ -108,15 +109,37 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home, 
 		LinkPreset.Archive,
-		LinkPreset.About,
-		// LinkPreset.Friends,
-		// LinkPreset.Anime,
-		// LinkPreset.Diary,
+		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
 		// {
-		// 	name: "GitHub",
-		// 	url: "https://github.com/matsuzaka-yuki", // Internal links should not include base path as it will be automatically added
-
-		// 	external: true, // Show external link icon and open in new tab
+		// 	name: "Links",
+		// 	url: "/links/",
+		// 	children: [
+		// 		{
+		// 			name: "GitHub",
+		// 			url: "https://github.com/matsuzaka-yuki/Mizuki",
+		// 			external: true,
+		// 		},
+		// 		{
+		// 			name: "Bilibili",
+		// 			url: "https://space.bilibili.com/701864046",
+		// 			external: true,
+		// 		},
+		// 		{
+		// 			name: "Gitee",
+		// 			url: "https://gitee.com/matsuzakayuki/Mizuki",
+		// 			external: true,
+		// 		},
+		// 	],
+		// },
+		// {
+		// 	name: "My",
+		// 	url: "/content/",
+		// 	children: [LinkPreset.Anime, LinkPreset.Diary, LinkPreset.Gallery],
+		// },
+		// {
+		// 	name: "About",
+		// 	url: "/content/",
+		// 	children: [LinkPreset.About, LinkPreset.Friends],
 		// },
 	],
 };
@@ -137,6 +160,12 @@ export const profileConfig: ProfileConfig = {
 			url: "https://github.com/Si-Jiu",
 		},
 	],
+	// Umami统计部份，记得在layout插入Umami的head标签
+	umami: {
+		enable: false, // 是否显示umami统计
+		shareId: "", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
+		region: "eu", //Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
+	},
 };
 
 export const licenseConfig: LicenseConfig = {
@@ -159,9 +188,8 @@ export const commentConfig: CommentConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	enable: false, // Enable announcement feature
 	title: "公告", // Announcement title
-	content: "Nothing here~", // Announcement content
+	content: "你好，這裏沒有東西~", // Announcement content
 	closable: true, // Allow users to close the announcement
 	link: {
 		enable: true, // Enable link
@@ -174,3 +202,126 @@ export const announcementConfig: AnnouncementConfig = {
 export const musicPlayerConfig: MusicPlayerConfig = {
 	enable: true, // Enable music player feature
 };
+
+/**
+ * 侧边栏布局配置
+ * 用于控制侧边栏组件的显示、排序、动画和响应式行为
+ */
+export const sidebarLayoutConfig: SidebarLayoutConfig = {
+	// 是否启用侧边栏功能
+	enable: true,
+
+	// 侧边栏位置：左侧或右侧
+	position: "left",
+
+	// 侧边栏组件配置列表
+	components: [
+		{
+			// 组件类型：用户资料组件
+			type: "profile",
+			// 是否启用该组件
+			enable: true,
+			// 组件显示顺序（数字越小越靠前）
+			order: 1,
+			// 组件位置："top" 表示固定在顶部
+			position: "top",
+			// CSS 类名，用于应用样式和动画
+			class: "onload-animation",
+			// 动画延迟时间（毫秒），用于错开动画效果
+			animationDelay: 0,
+		},
+		{
+			// 组件类型：公告组件
+			type: "announcement",
+			// 是否启用该组件（现在通过统一配置控制）
+			enable: true,
+			// 组件显示顺序
+			order: 2,
+			// 组件位置："top" 表示固定在顶部
+			position: "top",
+			// CSS 类名
+			class: "onload-animation",
+			// 动画延迟时间
+			animationDelay: 50,
+		},
+		{
+			// 组件类型：分类组件
+			type: "categories",
+			// 是否启用该组件
+			enable: true,
+			// 组件显示顺序
+			order: 3,
+			// 组件位置："sticky" 表示粘性定位，可滚动
+			position: "sticky",
+			// CSS 类名
+			class: "onload-animation",
+			// 动画延迟时间
+			animationDelay: 150,
+			// 响应式配置
+			responsive: {
+				// 折叠阈值：当分类数量超过5个时自动折叠
+				collapseThreshold: 5,
+			},
+		},
+		{
+			// 组件类型：标签组件
+			type: "tags",
+			// 是否启用该组件
+			enable: true,
+			// 组件显示顺序
+			order: 4,
+			// 组件位置："sticky" 表示粘性定位
+			position: "sticky",
+			// CSS 类名
+			class: "onload-animation",
+			// 动画延迟时间
+			animationDelay: 200,
+			// 响应式配置
+			responsive: {
+				// 折叠阈值：当标签数量超过20个时自动折叠
+				collapseThreshold: 20,
+			},
+		},
+	],
+
+	// 默认动画配置
+	defaultAnimation: {
+		// 是否启用默认动画
+		enable: true,
+		// 基础延迟时间（毫秒）
+		baseDelay: 0,
+		// 递增延迟时间（毫秒），每个组件依次增加的延迟
+		increment: 50,
+	},
+
+	// 响应式布局配置
+	responsive: {
+		// 断点配置（像素值）
+		breakpoints: {
+			// 移动端断点：屏幕宽度小于768px
+			mobile: 768,
+			// 平板端断点：屏幕宽度小于1024px
+			tablet: 1024,
+			// 桌面端断点：屏幕宽度小于1280px
+			desktop: 1280,
+		},
+		// 不同设备的布局模式
+		//hidden:不显示侧边栏 sidebar:显示侧边栏
+		layout: {
+			// 移动端：抽屉模式
+			mobile: "sidebar",
+			// 平板端：显示侧边栏
+			tablet: "sidebar",
+			// 桌面端：显示侧边栏
+			desktop: "sidebar",
+		},
+	},
+};
+
+// 导出所有配置的统一接口
+export const widgetConfigs = {
+	profile: profileConfig,
+	announcement: announcementConfig,
+	music: musicPlayerConfig,
+	layout: sidebarLayoutConfig,
+} as const;

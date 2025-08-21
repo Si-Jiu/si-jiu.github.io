@@ -12,39 +12,36 @@ Una plantilla de blog estático moderna y rica en características con funcional
 [**🖥️ Demo en vivo**](https://blog.mysqil.com/)
 
 🌏 Idiomas README
-[**中文**](../README.zh-CN.md) /
-[**English**](../README.md) /
+[**中文**](../README.md) /
+[**English**](../README.en.md) /
 [**Español**](./README.es.md)
 
-## 🆕 Novedades en v2.9
+## 🆕 Novedades en v3.3
+- **Soporte de sintaxis de Mermaid:** Se añadió soporte para la sintaxis de diagramas de Mermaid, permitiendo la incrustación directa de diagramas de flujo, diagramas de secuencia, diagramas de Gantt, etc., en Markdown.
+- **Estadísticas de Umami:** Se añadió soporte para estadísticas de Umami, permitiendo la fácil integración del análisis de tráfico del sitio web.
 
-### 🎵 Mejoras del Reproductor de Música
-- **Adaptación de colores en modo oscuro:** Corregido el problema de color del texto en la lista de reproducción en modo oscuro para mejorar la legibilidad
-- **Colores de tema dinámicos:** Los títulos de canciones y nombres de artistas seleccionados se adaptan apropiadamente a los colores del tema
-- **Soporte de internacionalización:** Agregado soporte multiidioma para la interfaz de la lista de reproducción
-- **Mejoras de accesibilidad:** Mejorado el contraste de colores y la retroalimentación visual para una mejor experiencia de usuario
+![Configuration](configuration.svg)
 
-### 🎠 Optimización del Carrusel
-- **Carrusel de banner mejorado:** Lógica de carrusel mejorada para mejor rendimiento y transiciones más suaves
-- **Sincronización móvil-escritorio:** Comportamiento unificado del carrusel en todos los dispositivos manteniendo rutas de imagen separadas
-- **Corrección de errores:** Resolución del problema donde el carrusel se detenía después de recorrer todas las imágenes
+### 🔧 Refactorización del Sistema de Configuración de Componentes
+- **Arquitectura de Configuración Unificada:** Sistema completamente nuevo de configuración de componentes modular con soporte para gestión dinámica de componentes y configuración de orden
+- **Carga de Componentes Dirigida por Configuración:** Refactorización del componente SideBar para implementar un mecanismo de carga de componentes completamente basado en configuración
+- **Interruptores de Control Unificados:** Eliminación de los interruptores de habilitación independientes para el reproductor de música y componentes de anuncio, control unificado por sidebarLayoutConfig
+- **Adaptación de Diseño Responsivo:** Los componentes soportan diseños responsivos y ajustan automáticamente la visualización según el tipo de dispositivo
 
-### 📱 Tabla de Contenidos Móvil
-- **Componente de tabla de contenidos móvil:** Agregada funcionalidad dedicada de tabla de contenidos para dispositivos móviles
-- **Navegación mejorada:** Mejor experiencia de navegación de contenido en pantallas pequeñas
-- **Diseño responsivo:** Integración perfecta con el diseño responsivo existente
+### 📐 Optimización del Sistema de Diseño
+- **Ajuste Dinámico de Posición de Barra Lateral:** Soporte para conmutación izquierda-derecha de la barra lateral con adaptación automática del diseño
+- **Colocación Inteligente de Navegación de Artículo:** Cuando la barra lateral está a la derecha, la navegación del artículo se mueve automáticamente a la izquierda para una mejor experiencia de lectura
+- **Mejoras de Diseño Grid:** Optimización del diseño CSS Grid para resolver anomalías de ancho de contenedor
 
-### ✨ Mejoras de Animación
-- **Transiciones suaves:** Optimización de transiciones de página y animaciones de componentes
-- **Mejoras de rendimiento:** Reducción de la sobrecarga de animación para mejor experiencia de usuario
-- **Mejora visual:** Mejora del feedback visual y animaciones de interacción
+### 🎛️ Estandarización del Formato de Archivo de Configuración
+- **Formatos de Configuración Estandarizados:** Creación de especificaciones unificadas de formato de archivo de configuración de componentes
+- **Seguridad de Tipos:** Definiciones completas de tipos TypeScript para asegurar la seguridad de tipos de configuración
+- **Extensibilidad:** Soporte para tipos de componentes personalizados y opciones de configuración
 
-### 📢 Función de Anuncio
-- **Barra de Anuncios Configurable:** Se agregó una barra de anuncios personalizable con opciones para título, contenido, icono, tipo y funcionalidad de cierre.
-- **Posicionamiento Flexible:** Permite posicionar el botón de cierre en la parte inferior derecha de la barra de anuncios.
-
-### 💬 Optimización de Comentarios Twikoo
-- **Optimización de visualización y rendimiento:** Mejoras en el sistema de comentarios Twikoo para una visualización más eficiente y un mejor rendimiento.
+### 🧹 Optimización de Código
+- **Limpieza de Archivos de Prueba:** Eliminación de configuraciones de prueba no utilizadas y dependencias para reducir el tamaño del proyecto
+- **Optimización de Estructura de Código:** Mejora de la arquitectura de componentes para aumentar la mantenibilidad del código
+- **Mejoras de Rendimiento:** Optimización de la lógica de carga de componentes para mejorar el rendimiento de renderizado de página
 
 ---
 
@@ -134,6 +131,12 @@ Despliega tu blog en plataformas de hosting estático:
 - **Cloudflare Pages:** Conecta tu repositorio
 
 Recuerda actualizar la URL `site` en `astro.config.mjs` antes del despliegue.
+
+### Despliegue en Vercel
+
+Es relativamente conocido, pero el nombre de dominio proporcionado está bloqueado. La velocidad es aceptable con un dominio personalizado. La velocidad de arranque en frío es promedio.
+
+<a href="https://vercel.com/import/project?template=https://github.com/matsuzaka-yuki/Mizuki"><img src="https://vercel.com/button" height="36"></a>
 
 ## 📝 Frontmatter de Publicaciones
 
