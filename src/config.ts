@@ -72,6 +72,8 @@ export const siteConfig: SiteConfig = {
 				"现在他在恶意开庭",
 				"还是PVP大佬",
 				"Attention, this announcement s-SYSTEM NOW UNDER MILITARY COMMAND",
+				"mumu学长的恩情还不完😭",
+				"huzuo学长的恩情还不完😭",
 			], // Homepage banner subtitle, supports multiple texts
 			typewriter: {
 				enable: true, // Enable subtitle typewriter effect
@@ -107,7 +109,6 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-		LinkPreset.About,
 		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
 		// {
 		// 	name: "Links",
@@ -135,11 +136,16 @@ export const navBarConfig: NavBarConfig = {
 		// 	url: "/content/",
 		// 	children: [LinkPreset.Anime, LinkPreset.Diary, LinkPreset.Gallery],
 		// },
-		// {
-		// 	name: "About",
-		// 	url: "/content/",
-		// 	children: [LinkPreset.About, LinkPreset.Friends],
-		// },
+		{
+	        name: "About",
+		    url: "/content/",
+		    children: [LinkPreset.About, LinkPreset.Friends],
+		},
+		{
+			name: "主页兼中转站",
+			url: "https://sijiu49.us.kg",
+			external: true,
+		},
 	],
 };
 
