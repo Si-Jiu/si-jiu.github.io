@@ -2,6 +2,7 @@ import type {
 	AnnouncementConfig,
 	CommentConfig,
 	ExpressiveCodeConfig,
+	FooterConfig,
 	LicenseConfig,
 	MusicPlayerConfig,
 	NavBarConfig,
@@ -12,8 +13,10 @@ import type {
 import { LinkPreset } from "./types/config";
 import { getTranslateLanguageFromConfig } from "./utils/language-utils";
 
-// Define site language
-const SITE_LANG = "zh_CN"; // Language code, e.g., 'en', 'zh_CN', 'ja', etc.
+// 移除i18n导入以避免循环依赖
+
+// 定义站点语言
+const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 
 export const siteConfig: SiteConfig = {
 	title: "肆鸠的博客",
@@ -22,24 +25,33 @@ export const siteConfig: SiteConfig = {
 	lang: SITE_LANG,
 
 	themeColor: {
-		hue: 250, // Default hue for theme color, range from 0 to 360. e.g., red: 0, cyan: 200, teal: 250, pink: 345
-		fixed: false, // Hide theme color picker for visitors
+		hue: 250, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+		fixed: false, // 对访问者隐藏主题色选择器
 	},
 	translate: {
-		enable: true, // Enable translation feature
-		service: "client.edge", // Use Edge browser translation service
-		defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // Automatically set default translation language based on site language
-		showSelectTag: false, // Don't show default language selection dropdown, use custom button
-		autoDiscriminate: true, // Automatically detect user language
-		ignoreClasses: ["ignore", "banner-title", "banner-subtitle"], // CSS class names to ignore for translation
-		ignoreTags: ["script", "style", "code", "pre"], // HTML tags to ignore for translation
+		enable: true, // 启用翻译功能
+		service: "client.edge", // 使用 Edge 浏览器翻译服务
+		defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // 根据站点语言自动设置默认翻译语言
+		showSelectTag: false, // 不显示默认语言选择下拉菜单，使用自定义按钮
+		autoDiscriminate: true, // 自动检测用户语言
+		ignoreClasses: ["ignore", "banner-title", "banner-subtitle"], // 翻译时忽略的 CSS 类名
+		ignoreTags: ["script", "style", "code", "pre"], // 翻译时忽略的 HTML 标签
 	},
 	banner: {
-		enable: true, // Temporarily disable banner to improve loading speed
+		enable: true, // 暂时禁用横幅以提高加载速度
 
-		// Support single image or image array, carousel is automatically enabled when array length > 1
+		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
-			desktop: ["assets/desktop-banner/1-banner.webp"], // Desktop banner images
+			desktop: [
+				"assets/desktop-banner/1-banner.webp",
+				// "assets/desktop-banner/1.webp",
+				// "assets/desktop-banner/2.webp",
+				// "assets/desktop-banner/3.webp",
+				// "assets/desktop-banner/4.webp",
+				// "assets/desktop-banner/5.webp",
+				// "assets/desktop-banner/6.webp",
+				// "assets/desktop-banner/7.webp",
+			], // 桌面横幅图片
 			mobile: [
 				// "assets/mobile-banner/1.webp",
 				// "assets/mobile-banner/2.webp",
@@ -48,20 +60,20 @@ export const siteConfig: SiteConfig = {
 				// "assets/mobile-banner/5.webp",
 				// "assets/mobile-banner/6.webp",
 				// "assets/mobile-banner/7.webp",
-			], // Mobile banner images
-		}, // Use local banner images
+			], // 移动横幅图片
+		}, // 使用本地横幅图片
 
-		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. Default is 'center'
+		position: "center", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
 
 		carousel: {
-			enable: true, // When true: enable carousel for multiple images. When false: randomly display one image from the array
+			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
 
-			interval: 1, // Carousel interval time (seconds)
+			interval: 1, // 轮播间隔时间（秒）
 		},
 
 		homeText: {
-			enable: true, // Display custom text on homepage
-			title: "肆鸠的博客", // Homepage banner main title
+			enable: true, // 在主页显示自定义文本
+			title: "肆鸠的博客", // 主页横幅主标题
 
 			subtitle: [
 				"终于有人看了QWQ",
@@ -74,33 +86,33 @@ export const siteConfig: SiteConfig = {
 				"Attention, this announcement s-SYSTEM NOW UNDER MILITARY COMMAND",
 				"mumu学长的恩情还不完😭",
 				"huzuo学长的恩情还不完😭",
-			], // Homepage banner subtitle, supports multiple texts
+			], // 主页横幅副标题，支持多文本
 			typewriter: {
-				enable: true, // Enable subtitle typewriter effect
+				enable: true, // 启用副标题打字机效果
 
-				speed: 75, // Typing speed (milliseconds)
-				deleteSpeed: 50, // Delete speed (milliseconds)
-				pauseTime: 2500, // Pause time after complete display (milliseconds)
+				speed: 100, // 打字速度（毫秒）
+				deleteSpeed: 50, // 删除速度（毫秒）
+				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
 			},
 		},
 
 		credit: {
-			enable: false, // Display banner image source text
+			enable: false, // 显示横幅图片来源文本
 
-			text: "Describe", // Source text to display
-			url: "", // (Optional) URL link to original artwork or artist page
+			text: "Describe", // 要显示的来源文本
+			url: "", // （可选）原始艺术品或艺术家页面的 URL 链接
 		},
 	},
 	toc: {
-		enable: true, // Enable table of contents feature
-		depth: 3, // TOC depth, 1-6, 1 means only show h1 headings, 2 means show h1 and h2 headings, and so on
+		enable: true, // 启用目录功能
+		depth: 3, // 目录深度，1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推
 	},
 	favicon: [
-		// Leave empty to use default favicon
+		// 留空以使用默认 favicon
 		// {
-		//   src: '/favicon/icon.png',    // Icon file path
-		//   theme: 'light',              // Optional, specify theme 'light' | 'dark'
-		//   sizes: '32x32',              // Optional, icon size
+		//   src: '/favicon/icon.png',    // 图标文件路径
+		//   theme: 'light',              // 可选，指定主题 'light' | 'dark'
+		//   sizes: '32x32',              // 可选，图标大小
 		// }
 	],
 };
@@ -137,20 +149,38 @@ export const navBarConfig: NavBarConfig = {
 		// 	children: [LinkPreset.Anime, LinkPreset.Diary, LinkPreset.Gallery],
 		// },
 		{
-	        name: "关于",
-		    url: "/content/",
-		    children: [LinkPreset.About, LinkPreset.Friends],
+			name: "关于",
+			url: "/content/",
+			children: [LinkPreset.About, LinkPreset.Friends],
 		},
 		{
-			name: "主页兼中转站",
+			name: "个人主页",
 			url: "https://sijiu49.us.kg",
 			external: true,
+		},
+		{
+			name: "其他",
+			url: "#",
+			children: [
+				{
+					name: "项目展示",
+					url: "/projects/",
+				},
+				{
+					name: "技能展示",
+					url: "/skills/",
+				},
+				{
+					name: "时间线",
+					url: "/timeline/",
+				},
+			],
 		},
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.jpg", // Relative to /src directory. If starts with '/', relative to /public directory
+	avatar: "assets/images/avatar.jpg", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "肆鸠",
 	bio: "我个人觉得呢，这个意大利面就应该拌42号混凝土",
 	links: [
@@ -180,34 +210,40 @@ export const licenseConfig: LicenseConfig = {
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	// Note: Some styles (like background color) have been overridden, see astro.config.mjs file.
-	// Please choose a dark theme as this blog theme currently only supports dark backgrounds
+	// 注意：某些样式（如背景颜色）已被覆盖，请参阅 astro.config.mjs 文件。
+	// 请选择深色主题，因为此博客主题目前仅支持深色背景
 	theme: "github-dark",
 };
 
 export const commentConfig: CommentConfig = {
-	enable: true, // Enable the comment function. When it is set to false, the comment component will not be displayed in the article area.
+	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
 	twikoo: {
 		envId: "https://thatsijiu49-twikoo.hf.space",
 	},
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "更新", // Announcement title
+	title: "更新", // 公告标题
 	content:
-		"评论系统已接入反垃圾信息系统，音乐已由本地换成网易云音乐，在境外会出现无法播放版权保护歌曲的问题，umami因技术问题先关闭", // Announcement content
-	closable: false, // Allow users to close the announcement
+		"评论系统已接入反垃圾信息系统，音乐已由本地换成网易云音乐，在境外会出现无法播放版权保护歌曲的问题", // 公告内容
+	closable: true, // 允许用户关闭公告
 	link: {
-		enable: true, // Enable link
-		text: "Learn More", // Link text
-		url: "https://youtu.be/dQw4w9WgXcQ?si=FsynoBMQFDce4jec", // Link URL
-		external: true, // Internal link
+		enable: false, // 启用链接
+		text: "了解更多", // 链接文本
+		url: "/about/", // 链接 URL
+		external: false, // 内部链接
 	},
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: true, // Enable music player feature
+	enable: true, // 启用音乐播放器功能
 };
+
+export const footerConfig: FooterConfig = {
+	enable: false, // 是否启用Footer HTML注入功能
+};
+
+// 直接编辑 FooterConfig.html 文件来添加备案号等自定义内容
 
 /**
  * 侧边栏布局配置
@@ -312,7 +348,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			desktop: 1280,
 		},
 		// 不同设备的布局模式
-		//hidden:不显示侧边栏 sidebar:显示侧边栏
+		//hidden:不显示侧边栏(桌面端)   drawer:抽屉模式(移动端不显示)   sidebar:显示侧边栏
 		layout: {
 			// 移动端：抽屉模式
 			mobile: "sidebar",
