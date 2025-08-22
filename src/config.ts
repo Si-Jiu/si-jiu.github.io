@@ -137,7 +137,7 @@ export const navBarConfig: NavBarConfig = {
 		// 	children: [LinkPreset.Anime, LinkPreset.Diary, LinkPreset.Gallery],
 		// },
 		{
-	        name: "About",
+	        name: "关于",
 		    url: "/content/",
 		    children: [LinkPreset.About, LinkPreset.Friends],
 		},
