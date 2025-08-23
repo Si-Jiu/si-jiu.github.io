@@ -104,7 +104,7 @@ export const siteConfig: SiteConfig = {
 		},
 
 		navbar: {
-			transparentMode: "full", // 导航栏透明模式："semi" 半透明加圆角，"full" 完全透明
+			transparentMode: "semi", // 导航栏透明模式："semi" 半透明加圆角，"full" 完全透明
 		},
 	},
 	toc: {
@@ -229,7 +229,7 @@ export const commentConfig: CommentConfig = {
 export const announcementConfig: AnnouncementConfig = {
 	title: "更新", // 公告标题
 	content:
-		"评论系统已接入反垃圾信息系统，音乐已由本地换成网易云音乐，在境外会出现无法播放版权保护歌曲的问题", // 公告内容
+		"音乐功能倒闭了", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: false, // 启用链接
@@ -240,7 +240,7 @@ export const announcementConfig: AnnouncementConfig = {
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: true, // 启用音乐播放器功能
+	enable: false, // 启用音乐播放器功能
 };
 
 export const footerConfig: FooterConfig = {
@@ -366,7 +366,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 export const sakuraConfig: SakuraConfig = {
 	enable: true, // 默认关闭樱花特效
-	sakuraNum: 21, // 樱花数量
+	sakuraNum: 10, // 樱花数量
 	limitTimes: -1, // 樱花越界限制次数，-1为无限循环
 	size: {
 		min: 0.5, // 樱花最小尺寸倍数
