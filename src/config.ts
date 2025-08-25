@@ -229,7 +229,7 @@ export const commentConfig: CommentConfig = {
 export const announcementConfig: AnnouncementConfig = {
 	title: "更新", // 公告标题
 	content:
-		"音乐功能倒闭了", // 公告内容
+		"音乐功能复活了喵", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: false, // 启用链接
