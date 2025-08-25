@@ -321,6 +321,9 @@ onMount(() => {
 	audio = new Audio();
 	audio.volume = volume;
 	handleAudioEvents();
+	if (!musicPlayerConfig.enable) {
+		return;
+	}
 	if (mode === "meting") {
 		fetchMetingPlaylist();
 	} else {
