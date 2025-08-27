@@ -17,6 +17,14 @@ Eine moderne, funktionsreiche statische Blog-Vorlage mit erweiterten Funktionen 
 [**English**](../README.en.md) /
 [**Deutsch**](./README.de.md)
 
+## 🆕 Neues in v4.0
+- **Vollbild-Hintergrundbild-Funktion:** Unterstützung für Vollbild-Hintergrundbilder im Nicht-Banner-Modus hinzugefügt, die ein immersives visuelles Erlebnis bieten. Unterstützt Karussell-Wechsel, Transparenzanpassung und Unschärfeeffekt-Konfiguration.
+- **Ressourcenpfad-Optimierung:** Behobene Probleme beim Laden von Bildressourcen im Banner-Modus und Vollbild-Hintergrundmodus, um korrektes Laden von Ressourcen aus dem öffentlichen Verzeichnis zu gewährleisten.
+- **Navigationsleisten-Transparenzeffekt:** Optimierter halbtransparenter abgerundeter Ecken-Effekt der Navigationsleiste im Vollbild-Hintergrundmodus, verbesserte visuelle Konsistenz.
+- **Mobile Banner-Optimierung:** Unterstützt das Aufrufen externer Links
+
+![Mizuki v4.0 Feature Showcase](../README2.webp)
+
 ## 🆕 Neues in v3.4
 - **Neue Seiten:** Projektanzeige (Projects), Fähigkeitsanzeige (Skills) und Zeitleisten (Timeline) Seiten wurden hinzugefügt, um persönliche Präsentationen zu bereichern.
 - **Sekundäres Menü behoben:** Ein Fehler im sekundären Menü der oberen Navigation wurde behoben, der nach dem Klicken einen Rahmen anzeigte, wodurch die Benutzererfahrung verbessert wurde.
@@ -59,6 +67,7 @@ Eine moderne, funktionsreiche statische Blog-Vorlage mit erweiterten Funktionen 
 - [x] Flüssige Animationen und Seitenübergänge mit [Swup](https://swup.js.org/)
 - [x] Hell-/Dunkelmodus mit Systemeinstellungserkennung
 - [x] Anpassbare Themenfarben und dynamisches Banner-Karussell
+- [x] Vollbild-Hintergrundbilder mit Karussell, Transparenz und Unschärfeeffekten
 - [x] Vollständig responsives Design für alle Geräte
 - [x] Schöne Typografie mit JetBrains Mono-Schrift
 

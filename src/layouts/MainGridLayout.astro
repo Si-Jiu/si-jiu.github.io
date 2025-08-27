@@ -6,10 +6,11 @@ import SideBar from "@components/widget/SideBar.astro";
 import type { MarkdownHeading } from "astro";
 import { Icon } from "astro-icon/components";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
+import FullscreenWallpaper from "../components/misc/FullscreenWallpaper.astro";
 import IconifyLoader from "../components/misc/IconifyLoader.astro";
 import TypewriterText from "../components/TypewriterText.astro";
 import TOC from "../components/widget/TOC.astro";
-import { sidebarLayoutConfig, siteConfig } from "../config";
+import { sidebarLayoutConfig, siteConfig, fullscreenWallpaperConfig } from "../config";
 import {
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
@@ -129,12 +130,30 @@ const mainContentClass = `
 `
 	.trim()
 	.replace(/\s+/g, " ");
+
+// 检查是否应该启用半透明效果
+const shouldEnableTransparency = !siteConfig.banner.enable && fullscreenWallpaperConfig.enable;
+
+// 为组件添加半透明效果的CSS类
+const transparentClass = shouldEnableTransparency ? 'wallpaper-transparent' : '';
 ---
 
 <Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle}>
 
+<!-- 全屏壁纸 - 仅在banner关闭且全屏壁纸启用时显示 -->
+{!siteConfig.banner.enable && fullscreenWallpaperConfig.enable && (
+	<FullscreenWallpaper config={fullscreenWallpaperConfig} />
+)}
+
 <!-- 全局图标加载器 -->
 <IconifyLoader />
+
+<!-- 为全屏壁纸模式添加body类 -->
+{shouldEnableTransparency && (
+	<script>
+		document.body.classList.add('wallpaper-transparent');
+	</script>
+)}
 
 <!-- Navbar -->
 <slot slot="head" name="head"></slot>
@@ -197,7 +216,7 @@ const mainContentClass = `
                 <!-- Mobile: use mobile-specific image with same logic as desktop -->
                 <ImageWrapper 
                     alt="Mobile banner image of the blog" 
-                    class:list={["block lg:hidden object-cover h-full w-full transition duration-700 opacity-0 scale-105"]}
+                    class:list={["block lg:hidden object-cover h-full w-full transition duration-700 opacity-100"]}
                     src={(Array.isArray(bannerImages.mobile) ? bannerImages.mobile[0] : bannerImages.mobile) || (Array.isArray(bannerImages.desktop) ? bannerImages.desktop[0] : bannerImages.desktop) || ''} 
                     position={siteConfig.banner.position}
                 />
@@ -205,7 +224,7 @@ const mainContentClass = `
                 <ImageWrapper 
                     id="banner" 
                     alt="Desktop banner image of the blog" 
-                    class:list={["hidden lg:block object-cover h-full transition duration-700 opacity-0 scale-105"]}
+                    class:list={["hidden lg:block object-cover h-full transition duration-700 opacity-100"]}
                     src={(Array.isArray(bannerImages.desktop) ? bannerImages.desktop[0] : bannerImages.desktop) || (Array.isArray(bannerImages.mobile) ? bannerImages.mobile[0] : bannerImages.mobile) || ''} 
                     position={siteConfig.banner.position}
                 />
@@ -296,7 +315,7 @@ const mainContentClass = `
 </div>}
 
 <!-- Main content -->
-<div class={`absolute w-full z-30 pointer-events-none ${mobileNonHomeBannerClass ? 'mobile-main-no-banner' : ''} ${!siteConfig.banner.enable ? 'no-banner-layout' : ''}`} style={`top: ${finalMainPanelTop}`}>
+<div class={`absolute w-full z-30 pointer-events-none ${mobileNonHomeBannerClass ? 'mobile-main-no-banner' : ''} ${!siteConfig.banner.enable ? 'no-banner-layout' : ''} ${transparentClass}`} style={`top: ${finalMainPanelTop}`}>
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
         <div id="main-grid" class={`transition duration-700 w-full left-0 right-0 grid ${gridCols} grid-rows-[auto_1fr_auto] lg:grid-rows-[auto] mx-auto gap-4 px-0 md:px-4 ${!mobileShowSidebar ? 'mobile-no-sidebar' : ''}`}
@@ -315,7 +334,7 @@ const mainContentClass = `
             </a>}
 
 
-            {(mobileShowSidebar || tabletShowSidebar || desktopShowSidebar) && <SideBar class={sidebarClass} headings={headings}></SideBar>}
+            {(mobileShowSidebar || tabletShowSidebar || desktopShowSidebar) && <SideBar class={`${sidebarClass} ${transparentClass}`} headings={headings}></SideBar>}
 
             <main id="swup-container" class={mainContentClass}>
                 <div id="content-wrapper" class="onload-animation">
