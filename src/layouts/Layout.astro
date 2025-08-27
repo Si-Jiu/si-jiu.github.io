@@ -189,7 +189,7 @@ const bannerOffset =
 
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 
-		<script src="https://unpkg.com/oh-my-live2d@latest"></script>
+
 
 	</head>
 	<body class=" min-h-screen " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
@@ -199,23 +199,7 @@ const bannerOffset =
 		{shouldShowTopHighlight && <div class="top-gradient-highlight"></div>}
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
-
-		<script>
-        	OML2D.loadOml2d({
-            	models: [
-                	{
-                    	path: "./assets/ATRI/ATRI.model3.json",
-                    	position: [0, 0],
-                    	scale: 0.45,
-                   	 stageStyle: {
-                    	    height: 450
-                   	 }
-                	}
-            	],
-            	dockedPosition: "right"
-        	});
-    	</script>
-
+		
 		<!-- Music Player -->
 		<MusicPlayer client:load />
 
