@@ -55,7 +55,7 @@ export const siteConfig: SiteConfig = {
 			], // 桌面横幅图片
 			mobile: [
 				"assets/mobile-banner/1.webp",
-				// "assets/mobile-banner/2.webp",
+				"assets/mobile-banner/2.webp",
 				// "assets/mobile-banner/3.webp",
 				// "assets/mobile-banner/4.webp",
 				// "assets/mobile-banner/5.webp",
@@ -266,8 +266,7 @@ export const commentConfig: CommentConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "更新", // 公告标题
-	content:
-		"音乐功能复活了喵", // 公告内容
+	content: "音乐功能复活了喵", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: false, // 启用链接
