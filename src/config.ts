@@ -87,6 +87,15 @@ export const siteConfig: SiteConfig = {
 				"Attention, this announcement s-SYSTEM NOW UNDER MILITARY COMMAND",
 				"mumu学长的恩情还不完😭",
 				"huzuo学长的恩情还不完😭",
+				"Raslo的恩情还不完😭",
+				"Never gonna give you up~",
+				"Never gonna let you down~",
+				"我妈把我暗区突围删了😡😭😭😭",
+				"我所有游戏都被删了😡😭",
+				"我的手机还上了应用锁😡😭",
+				"Ciallo～(∠・ω< )⌒★",
+				"柚子厨真恶心🤢",
+				"但是话又说回来了",
 			], // 主页横幅副标题，支持多文本
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
