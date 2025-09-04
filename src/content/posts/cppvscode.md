@@ -102,12 +102,12 @@ clangd --version
 ##### 配置目录
 
 1. 新建一个文件夹，名字最好不带符号空格和除英文外的语言
-2. 创建子文件夹：`.vscode`,`build`, `src`.
-`.vscode`文件夹存放vscode的配置文件
-`build`文件夹存放编译出来的文件
-`src`文件夹存放源代码
-创建文件：`.clangd`
-修改`.clangd`文件为：
+2. 创建子文件夹：`.vscode`,`build`, `src`.  
+`.vscode`文件夹存放vscode的配置文件  
+`build`文件夹存放编译出来的文件  
+`src`文件夹存放源代码  
+创建文件：`.clangd`  
+修改`.clangd`文件为：  
 
 ```yaml
 CompileFlags:
@@ -115,7 +115,7 @@ CompileFlags:
   Add: [-std=c++14]
 ```
 
-进入`.vscode`文件夹，创建文件：`launch.json`和`tasks.json`
+进入`.vscode`文件夹，创建文件：`launch.json`和`tasks.json`  
 修改`launch.json`文件为：
 
 ```json
