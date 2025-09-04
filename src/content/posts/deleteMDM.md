@@ -148,12 +148,12 @@ lang: "zh_TW"
 利用專注模式來隱藏特定頁數的桌面
 
 1. 把要隱藏的App放到單獨的頁面
-![1](https://i.imgur.com/5oRiGD4.png)
+![1](https://i.imgur.com/3LZGfPB.png)
 2. 打開設定 -> 專注模式
-![1](https://i.imgur.com/73IXHK0.png)
 3. 新建一個專注模式
-![1]()
+![1](https://i.imgur.com/5oRiGD4.png)
 4. 點擊`自定熒幕`中的編輯
+![1](https://i.imgur.com/73IXHK0.png)
 5. 選擇不要出現的頁面
 ![1](https://i.imgur.com/jpNO92v.png)
 6. 設定時間表，在到學校時自動隱藏，離開時自動出現
