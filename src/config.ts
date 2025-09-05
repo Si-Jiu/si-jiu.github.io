@@ -1,3 +1,4 @@
+import { factory } from "typescript";
 import type {
 	AnnouncementConfig,
 	CommentConfig,
@@ -72,6 +73,15 @@ export const siteConfig: SiteConfig = {
 			interval: 1.5, // 轮播间隔时间（秒）
 		},
 
+		// PicFlow API支持(智能图片API)
+		imageApi: {
+			enable: false, // 启用图片API
+			url: "http://domain.com/api_v2.php?format=text&count=4", // API地址，返回每行一个图片链接的文本
+		},
+		// 这里需要使用PicFlow API的Text返回类型,所以我们需要format=text参数
+		// 项目地址:https://github.com/matsuzaka-yuki/PicFlow-API
+		// 请自行搭建API
+
 		homeText: {
 			enable: true, // 在主页显示自定义文本
 			title: "肆鸠的博客", // 主页横幅主标题
@@ -104,7 +114,7 @@ export const siteConfig: SiteConfig = {
 				"皮嗝嘎的我要和你PVP",
 				"还是PVP大佬",
 				"但是话又说回来了",
-			], // 主页横幅副标题，支持多文本
+			],
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
 
