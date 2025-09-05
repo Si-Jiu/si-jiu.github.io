@@ -95,6 +95,14 @@ export const siteConfig: SiteConfig = {
 				"我的手机还上了应用锁😡😭",
 				"Ciallo～(∠・ω< )⌒★",
 				"柚子厨真恶心🤢",
+				"我是高性能的嘛！",
+				"我们西方国家的朋友们",
+				"要为可耻共谋刺杀金杰而",
+				"作！出！回！答！",
+				"What was you mission in Shanghai!",
+				"做个文明中国人",
+				"皮嗝嘎的我要和你PVP",
+				"还是PVP大佬",
 				"但是话又说回来了",
 			], // 主页横幅副标题，支持多文本
 			typewriter: {
