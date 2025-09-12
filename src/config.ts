@@ -19,7 +19,7 @@ import { getTranslateLanguageFromConfig } from "./utils/language-utils";
 // 移除i18n导入以避免循环依赖
 
 // 定义站点语言
-const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
+const SITE_LANG = "en"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 
 export const siteConfig: SiteConfig = {
 	title: "肆鸠的博客",
@@ -184,7 +184,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
 		// {
-		// 	name: "链接",
+		// 	name: "Links",
 		// 	url: "/links/",
 		// 	icon: "material-symbols:link",
 		// 	children: [
@@ -209,13 +209,21 @@ export const navBarConfig: NavBarConfig = {
 		// 	],
 		// },
 		// {
-		// 	name: "我的",
+		// 	name: "My",
 		// 	url: "/content/",
 		// 	icon: "material-symbols:person",
-		// 	children: [LinkPreset.Anime, LinkPreset.Diary, LinkPreset.Gallery],
+		// 	children: [
+		// 		LinkPreset.Anime,
+		// 		LinkPreset.Diary,
+		// 		{
+		// 			name: "Gallery",
+		// 			url: "/albums/",
+		// 			icon: "material-symbols:photo-library",
+		// 		},
+		// 	],
 		// },
 		{
-			name: "关于",
+			name: "About",
 			url: "/content/",
 			icon: "material-symbols:info",
 			children: [LinkPreset.About, LinkPreset.Friends],
@@ -224,34 +232,36 @@ export const navBarConfig: NavBarConfig = {
 			name: "个人主页",
 			url: "https://sijiu49.us.kg",
 			external: true,
-			// name: "其他",
-			// url: "#",
-			// icon: "material-symbols:more-horiz",
-			// children: [
-			// 	{
-			// 		name: "项目展示",
-			// 		url: "/projects/",
-			// 		icon: "material-symbols:work",
-			// 	},
-			// 	{
-			// 		name: "技能展示",
-			// 		url: "/skills/",
-			// 		icon: "material-symbols:psychology",
-			// 	},
-			// 	{
-			// 		name: "时间线",
-			// 		url: "/timeline/",
-			// 		icon: "material-symbols:timeline",
-			// 	},
-			// ],
 		},
+		// {
+		// 	name: "Others",
+		// 	url: "#",
+		// 	icon: "material-symbols:more-horiz",
+		// 	children: [
+		// 		{
+		// 			name: "Projects",
+		// 			url: "/projects/",
+		// 			icon: "material-symbols:work",
+		// 		},
+		// 		{
+		// 			name: "Skills",
+		// 			url: "/skills/",
+		// 			icon: "material-symbols:psychology",
+		// 		},
+		// 		{
+		// 			name: "Timeline",
+		// 			url: "/timeline/",
+		// 			icon: "material-symbols:timeline",
+		// 		},
+		// 	],
+		// },
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.jpg", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
-	name: "肆鸠",
-	bio: "我个人觉得呢，这个意大利面就应该拌42号混凝土",
+	avatar: "assets/images/avatar.gif", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	name: "Mizuki",
+	bio: "The world is big, you have to go and see",
 	links: [
 		{
 			name: "Bilibli",
@@ -288,6 +298,7 @@ export const commentConfig: CommentConfig = {
 	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
 	twikoo: {
 		envId: "https://thatsijiu49-twikoo.hf.space",
+		lang: "en", // 设置 Twikoo 评论系统语言为英文
 	},
 };
 
@@ -450,6 +461,30 @@ export const sakuraConfig: SakuraConfig = {
 	zIndex: 100, // 层级，确保樱花在合适的层级显示
 };
 
+// Pio 看板娘配置
+export const pioConfig: import("./types/config").PioConfig = {
+	enable: true, // 启用看板娘
+	models: ["/pio/models/pio/model.json"], // 默认模型路径
+	position: "left", // 默认位置在右侧
+	width: 280, // 默认宽度
+	height: 250, // 默认高度
+	mode: "draggable", // 默认为可拖拽模式
+	hiddenOnMobile: true, // 默认在移动设备上隐藏
+	dialog: {
+		welcome: "Welcome to Mizuki Website!", // 欢迎词
+		touch: [
+			"What are you doing?",
+			"Stop touching me!",
+			"HENTAI!",
+			"Don't bully me like that!",
+		], // 触摸提示
+		home: "Click here to go back to homepage!", // 首页提示
+		skin: ["Want to see my new outfit?", "The new outfit looks great~"], // 换装提示
+		close: "QWQ See you next time~", // 关闭提示
+		link: "https://github.com/matsuzaka-yuki/Mizuki", // 关于链接
+	},
+};
+
 // 导出所有配置的统一接口
 export const widgetConfigs = {
 	profile: profileConfig,
@@ -458,4 +493,5 @@ export const widgetConfigs = {
 	layout: sidebarLayoutConfig,
 	sakura: sakuraConfig,
 	fullscreenWallpaper: fullscreenWallpaperConfig,
+	pio: pioConfig, // 添加 pio 配置
 } as const;

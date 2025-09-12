@@ -181,6 +181,25 @@ enum I18nKey {
 	timelineCurrentRole = "timelineCurrentRole",
 	timelineEmployed = "timelineEmployed",
 	timelineAvailable = "timelineAvailable",
+
+	// 密码保护
+	passwordProtected = "passwordProtected",
+	passwordProtectedTitle = "passwordProtectedTitle",
+	passwordProtectedDescription = "passwordProtectedDescription",
+	passwordPlaceholder = "passwordPlaceholder",
+	passwordUnlock = "passwordUnlock",
+	passwordUnlocking = "passwordUnlocking",
+	passwordIncorrect = "passwordIncorrect",
+	passwordDecryptError = "passwordDecryptError",
+	passwordRequired = "passwordRequired",
+	passwordVerifying = "passwordVerifying",
+	passwordDecryptFailed = "passwordDecryptFailed",
+	passwordDecryptRetry = "passwordDecryptRetry",
+	passwordUnlockButton = "passwordUnlockButton",
+	copyFailed = "copyFailed",
+	syntaxHighlightFailed = "syntaxHighlightFailed",
+	autoSyntaxHighlightFailed = "autoSyntaxHighlightFailed",
+	decryptionError = "decryptionError",
 }
 
 export default I18nKey;
