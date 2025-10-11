@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>肆鸠的博客</title><description>真的有人看吗AWA</description><link>https://blog.sijiu49.us.kg/</link><language>zh_CN</language><item><title>VSCode + MSYS2 + gcc + clangd的C++环境配置</title><link>https://blog.sijiu49.us.kg/posts/cppvscode/</link><guid isPermaLink="true">https://blog.sijiu49.us.kg/posts/cppvscode/</guid><description>虽然但是为什么要gcc配clangd，但是打OI用起来还行</description><pubDate>Thu, 21 Aug 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;前言（废话）&lt;/h2&gt;
+&lt;p&gt;clangd相对微软官方C++插件我个人认为IntelliSense会快很多，官方插件感觉写完过了好几秒才有高亮&lt;br /&gt;
+我原本是vscode+arch linux wsl+clangd的组合，但是重装系统后懒得整wsl，于是转用msys2&lt;/p&gt;
+&lt;h2&gt;软件下载安装+配置&lt;/h2&gt;
+&lt;h3&gt;MSYS2&lt;/h3&gt;
+&lt;h4&gt;安装&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&quot;https://www.msys2.org/&quot;&gt;MSYS2官网&lt;/a&gt;
+&lt;img src=&quot;https://i.imgur.com/gfMerBo.png&quot; alt=&quot;1&quot; /&gt;如无法打开或下载缓慢请到：&lt;a href=&quot;#msys2%E6%B8%85%E5%8D%8E%E6%BA%90%E4%B8%8B%E8%BD%BD&quot;&gt;清华源&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载Installation下的&lt;code&gt;msys2_x86_64-********.exe&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打开安装包，全程下一步&lt;/li&gt;
+&lt;li&gt;安装成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;配置&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;打开开始菜单，找到&lt;code&gt;MSYS2 UCRT64&lt;/code&gt;
+&lt;img src=&quot;https://i.imgur.com/i5CYF2n.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;在命令行输入&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;pacman -S mingw-w64-ucrt-x86_64-clang mingw-w64-ucrt-x86_64-clang-tools-extra mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输入y继续安装
+&lt;img src=&quot;https://i.imgur.com/i2USLAR.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;如下载过程过慢请参阅&lt;a href=&quot;#msys2%E6%8D%A2%E6%BA%90&quot;&gt;MSYS2换源&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;测试安装是否成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;gcc --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;gdb --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;clangd --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/zVpJYTU.png&quot; alt=&quot;1&quot; /&gt;
+应该和图中类似&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;按&lt;code&gt;Win&lt;/code&gt;+&lt;code&gt;E&lt;/code&gt;键打开文件管理器，右键左侧栏里的此电脑，选择属性，在打开的设置中点击&lt;code&gt;查看高级系统设置&lt;/code&gt;，点击&lt;code&gt;环境变量&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;:::warning
+接下来请严格按照步骤，否则自行学习如何重装系统
+:::&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在下方系统变量中双击&lt;code&gt;Path&lt;/code&gt;，选择&lt;code&gt;新建&lt;/code&gt;，在框内输入&lt;code&gt;&amp;lt;你的MSYS2安装地址&amp;gt;\ucrt64\bin&lt;/code&gt;，确定
+&lt;img src=&quot;https://i.imgur.com/iFcrZQc.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;配置完毕&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Visual Studio Code&lt;/h3&gt;
+&lt;h4&gt;安装&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&quot;https://code.visualstudio.com/Download&quot;&gt;VSCode官网&lt;/a&gt;
+&lt;img src=&quot;https://i.imgur.com/UH9iOfF.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;选择对应处理器架构，建议下载&lt;code&gt;System Download&lt;/code&gt;旁的&lt;/li&gt;
+&lt;li&gt;下载后打开安装包，全程下一步&lt;/li&gt;
+&lt;li&gt;安装成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;配置&lt;/h4&gt;
+&lt;h5&gt;安装插件&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;打开VSCode,在左侧栏中找到插件&lt;/li&gt;
+&lt;li&gt;下载这些插件：&lt;code&gt;C/C++&lt;/code&gt;,&lt;code&gt;clangd&lt;/code&gt;
+&lt;img src=&quot;https://i.imgur.com/pl4jYFb.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;打开设置，找到插件-&amp;gt;clangd，修改设置
+&lt;img src=&quot;https://i.imgur.com/anmQ1iR.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;--clang-tidy
+--all-scopes-completion
+--completion-style=detailed
+--header-insertion=never
+--pch-storage=memory
+--background-index
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/Tvz8a4e.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+&lt;h5&gt;配置目录&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;新建一个文件夹，名字最好不带符号空格和除英文外的语言&lt;/li&gt;
+&lt;li&gt;创建子文件夹：&lt;code&gt;.vscode&lt;/code&gt;,&lt;code&gt;build&lt;/code&gt;, &lt;code&gt;src&lt;/code&gt;.&lt;br /&gt;
+&lt;code&gt;.vscode&lt;/code&gt;文件夹存放vscode的配置文件&lt;br /&gt;
+&lt;code&gt;build&lt;/code&gt;文件夹存放编译出来的文件&lt;br /&gt;
+&lt;code&gt;src&lt;/code&gt;文件夹存放源代码&lt;br /&gt;
+创建文件：&lt;code&gt;.clangd&lt;/code&gt;&lt;br /&gt;
+修改&lt;code&gt;.clangd&lt;/code&gt;文件为：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;CompileFlags:
+  Compiler: g++
+  Add: [-std=c++14]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进入&lt;code&gt;.vscode&lt;/code&gt;文件夹，创建文件：&lt;code&gt;launch.json&lt;/code&gt;和&lt;code&gt;tasks.json&lt;/code&gt;&lt;br /&gt;
+修改&lt;code&gt;launch.json&lt;/code&gt;文件为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &quot;configurations&quot;: [
+    {
+      &quot;name&quot;: &quot;C/C++: g++ 构建和调试活动文件&quot;,
+      &quot;type&quot;: &quot;cppdbg&quot;,
+      &quot;request&quot;: &quot;launch&quot;,
+      &quot;program&quot;: &quot;${workspaceFolder}/build/${fileBasenameNoExtension}&quot;,
+      &quot;args&quot;: [],
+      &quot;stopAtEntry&quot;: false,
+      &quot;cwd&quot;: &quot;${fileDirname}&quot;,
+      &quot;environment&quot;: [],
+      &quot;externalConsole&quot;: false,
+      &quot;MIMode&quot;: &quot;gdb&quot;,
+      &quot;setupCommands&quot;: [
+        {
+          &quot;description&quot;: &quot;为 gdb 启用整齐打印&quot;,
+          &quot;text&quot;: &quot;-enable-pretty-printing&quot;,
+          &quot;ignoreFailures&quot;: true
+        },
+        {
+          &quot;description&quot;: &quot;将反汇编风格设置为 Intel&quot;,
+          &quot;text&quot;: &quot;-gdb-set disassembly-flavor intel&quot;,
+          &quot;ignoreFailures&quot;: true
+        }
+      ],
+      &quot;preLaunchTask&quot;: &quot;C/C++: g++ 生成活动文件&quot;,
+      &quot;miDebuggerPath&quot;: &quot;gdb&quot;,
+      &quot;internalConsoleOptions&quot;: &quot;neverOpen&quot;
+    }
+  ],
+  &quot;version&quot;: &quot;2.0.0&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改&lt;code&gt;tasks.json&lt;/code&gt;文件为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &quot;tasks&quot;: [
+    {
+      &quot;type&quot;: &quot;cppbuild&quot;,
+      &quot;label&quot;: &quot;C/C++: g++ 生成活动文件&quot;,
+      &quot;command&quot;: &quot;g++&quot;,
+      &quot;args&quot;: [
+        &quot;-fdiagnostics-color=always&quot;,
+        &quot;-std=c++14&quot;,
+        &quot;-O2&quot;,
+        &quot;-g&quot;,
+        &quot;${file}&quot;,
+        &quot;-o&quot;,
+        &quot;${workspaceFolder}/build/${fileBasenameNoExtension}&quot;
+      ],
+      &quot;options&quot;: {
+        &quot;cwd&quot;: &quot;${fileDirname}&quot;
+      },
+      &quot;problemMatcher&quot;: [&quot;$gcc&quot;],
+      &quot;group&quot;: &quot;build&quot;,
+      &quot;detail&quot;: &quot;调试器生成的任务。&quot;
+    }
+  ],
+  &quot;version&quot;: &quot;2.0.0&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在文件夹里应该是这样的：
+&lt;img src=&quot;https://i.imgur.com/DvN5pE6.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;现在在&lt;code&gt;src&lt;/code&gt;文件夹里创建&lt;code&gt;.cpp&lt;/code&gt;文件，随便写个Hello, World&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+int main() {
+    std::cout &amp;lt;&amp;lt; &quot;Hello, World!&quot;;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;你的右下角应该会出现这个通知，选择&lt;code&gt;Disable IntelliSense&lt;/code&gt;，然后&lt;code&gt;Reload&lt;/code&gt;
+&lt;img src=&quot;https://i.imgur.com/2OpSUwu.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;现在打开cpp文件按F5就可以编译运行文件了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;大陆源&lt;/h2&gt;
+&lt;h3&gt;MSYS2清华源下载&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/msys2/distrib/x86_64/&quot;&gt;清华源MSYS2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;翻到最底，找到日期最新，后缀为&lt;code&gt;.exe&lt;/code&gt;的安装包
+&lt;img src=&quot;https://i.imgur.com/SAEUakQ.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;打开安装包，全程下一步&lt;/li&gt;
+&lt;li&gt;安装成功&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;MSYS2换源&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打开任一 MSYS2环境，在命令行输入：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sed -i &quot;s#https\?://mirror.msys2.org/#https://mirrors.tuna.tsinghua.edu.cn/msys2/#g&quot; /etc/pacman.d/mirrorlist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;和&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pacman -Syu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;换源成功&lt;/p&gt;
+&lt;h2&gt;如果你觉得有帮助可以在下面留言以及到我的Bilibili点个关注捏谢谢喵&lt;/h2&gt;
+</content:encoded></item><item><title>link2ea找不到应用程序快速修复</title><link>https://blog.sijiu49.us.kg/posts/link2eafix/</link><guid isPermaLink="true">https://blog.sijiu49.us.kg/posts/link2eafix/</guid><description>link2ea://launchgame/....</description><pubDate>Thu, 15 May 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;省流&lt;/h2&gt;
+&lt;p&gt;下载 &lt;a href=&quot;https://sijiu49.lanzoup.com/iGUk22uyoy3i&quot;&gt;FIXEA.zip&lt;/a&gt;&lt;br /&gt;
+如果安装在默认位置就右键合并，否则右键记事本打开修改路径再合并&lt;/p&gt;
+&lt;h2&gt;废话&lt;/h2&gt;
+&lt;p&gt;打开Steam -&amp;gt; 试图启动BF1 -&amp;gt; &quot;link2ea://launchgame/....... 找不到应用程序&quot; -&amp;gt; 红温&lt;br /&gt;
+然后在B站找到了&lt;a href=&quot;https://www.bilibili.com/opus/741039771815510033&quot;&gt;这个&lt;/a&gt;，同时感谢原up的解决方法。&lt;br /&gt;
+之后啥购EA又炸了几次，就把注册表导出来方便用&lt;/p&gt;
+</content:encoded></item><item><title>VSCode gdb调试时报错</title><link>https://blog.sijiu49.us.kg/posts/gdberror/</link><guid isPermaLink="true">https://blog.sijiu49.us.kg/posts/gdberror/</guid><description>&amp;&quot;warning: GDB: Failed to set controlling terminal: Operation not permitted
+&quot;</description><pubDate>Sun, 20 Apr 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;省流&lt;/h2&gt;
+&lt;p&gt;在&lt;code&gt;.vscode/tasks.json&lt;/code&gt;中&lt;code&gt;args&lt;/code&gt;里的&lt;code&gt;&quot;-static&quot;,&lt;/code&gt;去掉就解决了&lt;/p&gt;
+&lt;h2&gt;正文&lt;/h2&gt;
+&lt;h3&gt;环境&lt;/h3&gt;
+&lt;p&gt;环境为 Windows 11 + Arch Linux WSL + VSCode + clangd &amp;amp; 微软C/C++插件（关闭了IntelliSense）&lt;/p&gt;
+&lt;h3&gt;问题怎么来的怎么解决的&lt;/h3&gt;
+&lt;p&gt;之前为了模仿CCF测评机的编译选项，就把&lt;code&gt;tasks.json&lt;/code&gt;改了改。&lt;br /&gt;
+然后问题就开始出现了：每次调试时都会有&lt;code&gt;&amp;amp;&quot;warning: GDB: Failed to set controlling terminal: Operation not permitted\n&quot;&lt;/code&gt;的报错，并且无法使用断点调试&lt;/p&gt;
+&lt;p&gt;我新创建了一个文件夹，重新生成了一边配置，写个Hello World发现果然没事。然后一个一个把&lt;code&gt;launch.json&lt;/code&gt;和&lt;code&gt;tasks.json&lt;/code&gt;里的配置删了试试，最后就发现去掉&lt;code&gt;tasks.json&lt;/code&gt;中&lt;code&gt;args&lt;/code&gt;里的&lt;code&gt;&quot;-static&quot;,&lt;/code&gt;问题马上就解决了，断点正常工作，就是调试的时候一开始还会闪一下&lt;code&gt;&amp;amp;&quot;warning: GDB: Failed to set controlling terminal: Operation not permitted\n&quot;&lt;/code&gt;，不影响使用就没管他了&lt;/p&gt;
+</content:encoded></item><item><title>刪除MDM管理</title><link>https://blog.sijiu49.us.kg/posts/deletemdm/</link><guid isPermaLink="true">https://blog.sijiu49.us.kg/posts/deletemdm/</guid><description>已經裝了MDM但是忍受不了無Game可打？試試這個教程</description><pubDate>Wed, 09 Apr 2025 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;免責申明&lt;/h2&gt;
+&lt;p&gt;:::caution
+本教程只適合有IT基礎的人群，并且&lt;strong&gt;不保證&lt;/strong&gt;本教程完全正確&lt;br /&gt;
+&lt;strong&gt;刪除有風險&lt;/strong&gt;，如果刪除過程中出現問題導致iPad&lt;strong&gt;出現故障&lt;/strong&gt;，與&lt;strong&gt;本教程無關&lt;/strong&gt;&lt;br /&gt;
+:::&lt;/p&gt;
+&lt;h2&gt;準備材料&lt;/h2&gt;
+&lt;p&gt;請先確保你有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;PC（Mac不適配這個教程|Win10及以下系統版本沒有測試過）&lt;/li&gt;
+&lt;li&gt;數據線（充電線，要能傳數據的，建議原裝的）&lt;/li&gt;
+&lt;li&gt;iPad（按理來説支持iPhone但是不推薦嘗試）&lt;/li&gt;
+&lt;li&gt;充足的時間和耐心&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;:::note
+請保數據線上的接口能連接到PC上, 例如你的數據線是Type-C，那麽你的電腦上要有Type-C的接口才行
+:::&lt;/p&gt;
+&lt;h2&gt;刪除MDM&lt;/h2&gt;
+&lt;h3&gt;下載軟件&lt;/h3&gt;
+&lt;h4&gt;下載 iTunes&lt;/h4&gt;
+&lt;p&gt;下載&lt;a href=&quot;https://www.apple.com/itunes/download/win64&quot;&gt;這個程式&lt;/a&gt;
+然後按照步驟來：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打開安裝程式，點擊下一步&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/BOVXoP8.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;建議取消 &lt;em&gt;將iTunes用作音頻文件的默認播放器&lt;/em&gt; 其他默認，點擊安裝&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/n5Y45zj.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;等待安裝，安裝完成後點擊結束&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/6wMasA2.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;下載 iBackupBot&lt;/h4&gt;
+&lt;p&gt;下載&lt;a href=&quot;https://www.icopybot.com/ibackupbot_setup.exe&quot;&gt;這個程式&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然後按照步驟來：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打開安裝程式，選擇語言，然後點擊OK&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/3zeyNSp.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;點擊下一步&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/mLIOp3q.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;點擊我接受&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/gOqWGnH.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;建議默認，點擊下一步&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/1WRr6EE.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;點擊安裝&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/LyamAg7.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;保持默認，點擊完成&lt;br /&gt;
+&lt;img src=&quot;https://i.imgur.com/o3uiUqm.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;創建備份&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;使用數據線將iPad和PC連接&lt;/li&gt;
+&lt;li&gt;解鎖iPad，進入到主屏幕&lt;/li&gt;
+&lt;li&gt;如果iPad上出現 &lt;em&gt;信任此電腦&lt;/em&gt; 或者 &lt;em&gt;允許讀取數據&lt;/em&gt; 之類的請選擇同意，輸入密碼&lt;/li&gt;
+&lt;li&gt;打開iTunes&lt;/li&gt;
+&lt;li&gt;點擊左上角的平板圖標
+&lt;img src=&quot;https://i.imgur.com/2yXbjJQ.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;在右邊備份那裏設置為備份到此電腦，不要勾選加密&lt;/li&gt;
+&lt;li&gt;點擊立即備份
+&lt;img src=&quot;https://i.imgur.com/BBn6rgM.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;如果彈出視窗讓你選擇加不加密，請選擇不加密
+&lt;img src=&quot;https://i.imgur.com/DKxvvsC.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;如果iPad上出現 &lt;em&gt;信任此電腦&lt;/em&gt; 或者 &lt;em&gt;允許讀取數據&lt;/em&gt; 之類的請選擇同意，輸入密碼&lt;/li&gt;
+&lt;li&gt;等待備份完成&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;修改備份&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;打開iBackupBot，等待加載&lt;/li&gt;
+&lt;li&gt;加載完成后是這個界面
+&lt;img src=&quot;https://i.imgur.com/GOaBAAA.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;打開備份文件文件夾（默認在&lt;code&gt;C:\Users\Administrator\AppData\Roaming\Apple Computer\MobileSync\Backup&lt;/code&gt;）、把裏面的備份文件複製一份到不會被誤刪除的地方&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;:::important
+一定要複製一份！不然iPad刷成磚頭就救不回來了！
+:::
+&lt;img src=&quot;https://i.imgur.com/1Chz2wX.png&quot; alt=&quot;1&quot; /&gt;
+4. 在iBackupBot裏點擊備份文件左邊的加號展開列表，點擊 &lt;code&gt;System Files&lt;/code&gt;
+&lt;img src=&quot;https://i.imgur.com/NMAA9Sl.png&quot; alt=&quot;1&quot; /&gt;
+5. 然後翻看列表，找到 &lt;code&gt;SysSharedContainerDomain-systemgroup.com.apple.configurationprofiles&lt;/code&gt;，點擊左邊的加號，再點擊 &lt;code&gt;Library&lt;/code&gt;，右邊點擊 &lt;code&gt;ConfigurationProfiles&lt;/code&gt;，點擊上面的 &lt;code&gt;Delete&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;:::tip
+滑鼠指針懸停在沒完全顯示名稱的文件上可以看到完整名稱
+:::&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/Xl6mdoy.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;修改完成&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;還原備份&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;按照 創建備份 那個章節的1-5步&lt;/li&gt;
+&lt;li&gt;點擊 &lt;em&gt;恢復備份&lt;/em&gt;
+&lt;img src=&quot;https://i.imgur.com/3qsrme6.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;等待iPad還原&lt;/li&gt;
+&lt;li&gt;恢復完成後，按照iPad上的步驟來&lt;/li&gt;
+&lt;li&gt;檢查iPad中 設定-&amp;gt;一般-&amp;gt;VPN與裝置管理 裏面沒有MDM&lt;/li&gt;
+&lt;li&gt;恭喜你，你的iPad沒有MDM了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;刪除后的工作&lt;/h2&gt;
+&lt;p&gt;恭喜你能成功刪除MDM，刪除之後仍要設置一些東西（可選，如果你不怕被老師罵）&lt;/p&gt;
+&lt;h3&gt;隱藏游戲以及學校禁止的應用&lt;/h3&gt;
+&lt;h4&gt;方法A&lt;/h4&gt;
+&lt;h5&gt;完全隱藏&lt;/h5&gt;
+&lt;p&gt;這個方法可以讓應用在桌面以及App資料庫中看不到，只能在App資源庫中最下面的隱藏那一欄使用 密碼/人臉/指紋 解鎖&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找到你要隱藏的App&lt;/li&gt;
+&lt;li&gt;長按圖標
+&lt;img src=&quot;https://i.imgur.com/3Su35Px.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;點擊 &lt;em&gt;需要Touch ID / Face ID&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;選擇 &lt;em&gt;隱藏並需要Touch ID / Face ID&lt;/em&gt;
+&lt;img src=&quot;https://i.imgur.com/P8OZgno.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;不完全隱藏&lt;/h4&gt;
+&lt;p&gt;這個方法隱藏的雖然桌面沒有但是打開App資源庫就會出現&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找到你要隱藏的App&lt;/li&gt;
+&lt;li&gt;長按圖標
+&lt;img src=&quot;https://i.imgur.com/3Su35Px.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;點擊 &lt;em&gt;移除App&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;點擊 &lt;em&gt;從主屏幕移除&lt;/em&gt;
+&lt;img src=&quot;https://i.imgur.com/WZyKEXJ.jpeg&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;方法B&lt;/h4&gt;
+&lt;p&gt;利用專注模式來隱藏特定頁數的桌面&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;把要隱藏的App放到單獨的頁面
+&lt;img src=&quot;https://i.imgur.com/3LZGfPB.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;打開設定 -&amp;gt; 專注模式&lt;/li&gt;
+&lt;li&gt;新建一個專注模式
+&lt;img src=&quot;https://i.imgur.com/5oRiGD4.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;點擊&lt;code&gt;自定熒幕&lt;/code&gt;中的編輯
+&lt;img src=&quot;https://i.imgur.com/73IXHK0.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;選擇不要出現的頁面
+&lt;img src=&quot;https://i.imgur.com/jpNO92v.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;設定時間表，在到學校時自動隱藏，離開時自動出現
+&lt;img src=&quot;https://i.imgur.com/YiGyVgI.png&quot; alt=&quot;1&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content:encoded></item></channel></rss>
