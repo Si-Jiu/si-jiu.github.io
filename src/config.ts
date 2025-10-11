@@ -158,6 +158,9 @@ export const siteConfig: SiteConfig = {
 		hanalei: {
 			enable: false, // 启用 Hanalei 字体作为全局字体，适合中文去使用
 		},
+		sourcehansanssc: {
+        	enable: true, // 启用您的自定义字体
+    	},
 	},
 	showLastModified: true, // 控制“上次编辑”卡片显示的开关
 };

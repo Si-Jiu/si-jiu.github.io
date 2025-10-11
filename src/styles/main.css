@@ -15,8 +15,6 @@
   font-display: swap;
 }
 
-
-
 /* 导入 Hanalei 字体 */
 @font-face {
 	font-family: "Hanalei";
@@ -24,6 +22,13 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
+}
+
+@font-face {
+    font-family: 'SourceHanSansSC';
+    src: url('/assets/font/SourceHanSansSC-VF.otf.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
 }
 
 @tailwind base;
@@ -43,6 +48,10 @@ html {
 /* 当启用 Hanalei 字体时应用为全局字体 */
 .hanalei-enabled {
   font-family: 'Hanalei', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.source-han-sans-enabled {
+    font-family: 'SourceHanSansSC', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* 页面顶部渐变高光效果 */
