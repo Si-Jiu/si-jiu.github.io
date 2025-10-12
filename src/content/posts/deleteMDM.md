@@ -4,7 +4,7 @@ published: 2025-04-09
 description: "已經裝了MDM但是忍受不了無Game可打？試試這個教程"
 image: "https://i.imgur.com/L4CuGP0.jpeg"
 tags: [MDM]
-category: "iPad"
+category: "IT"
 draft: false
 lang: "zh_TW"
 ---

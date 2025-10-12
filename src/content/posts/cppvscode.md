@@ -3,8 +3,8 @@ title: VSCode + MSYS2 + gcc + clangd的C++环境配置
 published: 2025-08-21
 description: '虽然但是为什么要gcc配clangd，但是打OI用起来还行'
 image: ''
-tags: [clangd, vscode]
-category: 'Cpp'
+tags: [C++, VSCode]
+category: '编程'
 draft: false 
 lang: 'zh_CN'
 ---
