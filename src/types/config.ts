@@ -1,4 +1,4 @@
-import type { DARK_MODE, LIGHT_MODE } from "../constants/constants";
+import type { DARK_MODE, LIGHT_MODE, WALLPAPER_BANNER, WALLPAPER_FULLSCREEN, WALLPAPER_NONE } from "../constants/constants";
 
 export type SiteConfig = {
 	title: string;
@@ -115,6 +115,7 @@ export type SiteConfig = {
 		navbar?: {
 			transparentMode?: "semi" | "full" | "semifull"; // 导航栏透明模式
 		};
+		showModeSwitchOnMobile?: "off" | "mobile" | "desktop" | "both"; // 整体布局方案切换按钮显示设置：off=隐藏，mobile=仅移动端，desktop=仅桌面端，both=全部显示
 	};
 	toc: {
 		enable: boolean;
@@ -190,6 +191,8 @@ type TwikooConfig = {
 };
 
 export type LIGHT_DARK_MODE = typeof LIGHT_MODE | typeof DARK_MODE;
+
+export type WALLPAPER_MODE = typeof WALLPAPER_BANNER | typeof WALLPAPER_FULLSCREEN | typeof WALLPAPER_NONE;
 
 export type BlogPostData = {
 	body: string;
